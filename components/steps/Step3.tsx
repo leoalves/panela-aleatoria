@@ -57,7 +57,7 @@ export function Teams({
         position="relative"
         bg={color}
         shadow={{ md: "base" }}
-        w="40%"
+        w="100%"
       >
         <Box
           position="absolute"
@@ -70,7 +70,7 @@ export function Teams({
         <Box textAlign="left">
           {team1.map((item, index) => {
             return (
-              <Heading key={item.id} size="md" py="1">
+              <Heading key={item.id} size="sm" py="1">
                 {`${index + 1} - ${item.name}`}
               </Heading>
             );
@@ -85,7 +85,7 @@ export function Teams({
         position="relative"
         bg={color}
         shadow={{ md: "base" }}
-        w="40%"
+        w="100%"
       >
         <Box
           position="absolute"
@@ -98,7 +98,7 @@ export function Teams({
         <Box textAlign="left">
           {team2.map((item, index) => {
             return (
-              <Heading key={item.id} size="md" py="1">
+              <Heading key={item.id} size="sm" py="1">
                 {`${index + 1} - ${item.name}`}
               </Heading>
             );
