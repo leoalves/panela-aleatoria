@@ -2,17 +2,12 @@ import {
   Box,
   Alert,
   AlertIcon,
-  Text,
   Flex,
-  Checkbox,
   Heading,
   Avatar,
-  AvatarProps,
-  FlexProps,
   useColorModeValue,
   HStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import _shuffle from "lodash.shuffle";
 
 export function Teams({
@@ -30,7 +25,7 @@ export function Teams({
   const middleIndex = Math.ceil(selectedPlayers.length / 2);
   let team1 = selectedPlayers.splice(0, middleIndex);
   let team2 = selectedPlayers.splice(-middleIndex);
-
+  const color = useColorModeValue("white", "gray.700");
   if (goalies.length === 2) {
     team1.push(goalies[0]);
     team2.push(goalies[1]);
@@ -60,7 +55,7 @@ export function Teams({
         rounded="md"
         padding="8"
         position="relative"
-        bg={useColorModeValue("white", "gray.700")}
+        bg={color}
         shadow={{ md: "base" }}
         w="40%"
       >
@@ -88,7 +83,7 @@ export function Teams({
         rounded="md"
         padding="8"
         position="relative"
-        bg={useColorModeValue("white", "gray.700")}
+        bg={color}
         shadow={{ md: "base" }}
         w="40%"
       >
