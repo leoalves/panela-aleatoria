@@ -3,7 +3,7 @@ import {
   Alert,
   AlertIcon,
   Flex,
-  Heading,
+  Text,
   Avatar,
   useColorModeValue,
   HStack,
@@ -70,9 +70,9 @@ export function Teams({
         <Box textAlign="left">
           {team1.map((item, index) => {
             return (
-              <Heading key={item.id} size="sm" py="1">
+              <Text key={item.id} py="1">
                 {`${index + 1} - ${item.name}`}
-              </Heading>
+              </Text>
             );
           })}
         </Box>
@@ -98,9 +98,9 @@ export function Teams({
         <Box textAlign="left">
           {team2.map((item, index) => {
             return (
-              <Heading key={item.id} size="sm" py="1">
+              <Text key={item.id} py="1">
                 {`${index + 1} - ${item.name}`}
-              </Heading>
+              </Text>
             );
           })}
         </Box>
