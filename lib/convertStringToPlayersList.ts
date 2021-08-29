@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { Player } from "../components/steps";
 
 export function convertStrToPlayersList(data: string) {
   if (data && data.length > 0) {
@@ -12,10 +13,11 @@ export function convertStrToPlayersList(data: string) {
           name: splitedLine[splitedLine.length - 1].trim(),
           arrived: false,
           goalie: false,
+          score: 0,
         });
       }
       return acc;
-    }, [] as { id: string; name: string; arrived: boolean; goalie: boolean }[]);
+    }, [] as Player[]);
     if (players && players.length > 0) {
       return players;
     }

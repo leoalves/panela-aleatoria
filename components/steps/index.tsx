@@ -11,15 +11,20 @@ import { SelectPlayers } from "./Step2";
 import { Teams } from "./Step3";
 import shuffle from "lodash.shuffle";
 
+export type Player = {
+  id: string;
+  name: string;
+  arrived: boolean;
+  goalie: boolean;
+  score: number;
+};
+
 export const VerticalSteps = () => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
   const [pastedList, setPastedList] = useState<undefined | string>(undefined);
-  const [players, setPlayers] = useState<
-    | undefined
-    | { id: string; name: string; arrived: boolean; goalie: boolean }[]
-  >(undefined);
+  const [players, setPlayers] = useState<undefined | Player[]>(undefined);
 
   useEffect(() => {
     if (pastedList) {
@@ -79,7 +84,7 @@ export const VerticalSteps = () => {
           <StepContent>
             <Stack shouldWrapChildren spacing="4">
               <Text>
-                Acabou a panelinha !!!! Segue abaixo o times sorteados. Que
+                Acabou a panelinha !!!! Segue abaixo os times sorteados. Que
                 vença o menos pior.
               </Text>
               <Teams players={players ? shuffle(players) : []} />

@@ -9,12 +9,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import _shuffle from "lodash.shuffle";
+import { Player } from "./index";
 
-export function Teams({
-  players,
-}: {
-  players: { id: string; name: string; arrived: boolean; goalie: boolean }[];
-}) {
+export function Teams({ players }: { players: Player[] }) {
   const goalies = players.filter(
     (player) => player.arrived === true && player.goalie === true
   );
