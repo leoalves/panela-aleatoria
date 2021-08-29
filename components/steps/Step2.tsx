@@ -26,16 +26,16 @@ export function SelectPlayers({
   return (
     <Box>
       <Flex>
-        <Heading w="25%" fontWeight="bold" size="md">
+        <Heading w="20%" fontWeight="bold" size="md">
           Nome
         </Heading>
-        <Heading w="25%" fontWeight="bold" size="md" textAlign="center">
+        <Heading w="20%" fontWeight="bold" size="md" textAlign="center">
           Está em campo?
         </Heading>
-        <Heading w="25%" fontWeight="bold" size="md" textAlign="center">
+        <Heading w="20%" fontWeight="bold" size="md" textAlign="center">
           É goleiro?
         </Heading>
-        <Heading w="25%" fontWeight="bold" size="md" textAlign="center">
+        <Heading w="40%" fontWeight="bold" size="md" textAlign="center">
           Ranking
         </Heading>
       </Flex>
@@ -49,8 +49,8 @@ export function SelectPlayers({
             borderBottom="1px solid"
             borderColor="gray.200"
           >
-            <Text w="32%">{selPlayer.name}</Text>
-            <Box textAlign="center" w="25%">
+            <Text w="20%">{selPlayer.name}</Text>
+            <Box textAlign="center" w="20%">
               <Checkbox
                 size="lg"
                 checked={selPlayer.arrived}
@@ -69,7 +69,7 @@ export function SelectPlayers({
                 }}
               />
             </Box>
-            <Box textAlign="center" w="25%">
+            <Box textAlign="center" w="20%">
               <Checkbox
                 size="lg"
                 checked={selPlayer.goalie}
@@ -88,7 +88,7 @@ export function SelectPlayers({
                 }}
               />
             </Box>
-            <Box textAlign="center" w="25%">
+            <Box textAlign="center" w="40%">
               {Array.from({ length: 5 }).map((_, index) => (
                 <Icon
                   key={index}

@@ -13,7 +13,10 @@
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "@types/lodash.groupby": "^4.6.6",
     "framer-motion": "4",
+    "lodash.flattendeep": "^4.4.0",
+    "lodash.groupby": "^4.6.0",
     "lodash.shuffle": "^4.2.0",
     "next": "11.1.0",
     "react": "17.0.2",
@@ -22,6 +25,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/lodash.flattendeep": "^4.4.6",
     "@types/lodash.shuffle": "^4.2.6",
     "@types/react": "17.0.19",
     "@types/uuid": "^8.3.1",

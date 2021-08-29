@@ -9,6 +9,8 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import _shuffle from "lodash.shuffle";
+import _groupBy from "lodash.groupby";
+import _flattendeep from "lodash.flattendeep";
 import { Player } from "./index";
 
 export function Teams({ players }: { players: Player[] }) {
@@ -18,21 +20,33 @@ export function Teams({ players }: { players: Player[] }) {
   const selectedPlayers = players.filter(
     (player) => player.arrived === true && player.goalie === false
   );
-  const totalPlayers = goalies.length + selectedPlayers.length;
-  const middleIndex = Math.ceil(selectedPlayers.length / 2);
-  let team1 = selectedPlayers.splice(0, middleIndex);
-  let team2 = selectedPlayers.splice(-middleIndex);
+
+  const playersByRating = _groupBy(selectedPlayers, (player) => player.score);
+  const shuffledPlayersList = _flattendeep(
+    Object.keys(playersByRating).map((score) =>
+      _shuffle(playersByRating[score])
+    )
+  );
+
+  const teams = goalies.concat(shuffledPlayersList).reduce(
+    (acc, player, index) => {
+      if (acc.team1.length === acc.team2.length) {
+        return {
+          team1: acc.team1.concat(player),
+          team2: acc.team2,
+        };
+      } else {
+        return {
+          team1: acc.team1,
+          team2: acc.team2.concat(player),
+        };
+      }
+    },
+    { team1: [], team2: [] } as { team1: Player[]; team2: Player[] }
+  );
+  const totalPlayers = teams.team1.length + teams.team2.length;
+
   const color = useColorModeValue("white", "gray.700");
-  if (goalies.length === 2) {
-    team1.push(goalies[0]);
-    team2.push(goalies[1]);
-  } else if (goalies.length === 1) {
-    if (team1.length > team2.length) {
-      team2.push(goalies[0]);
-    } else {
-      team1.push(goalies[0]);
-    }
-  }
 
   if (!totalPlayers || totalPlayers < 14) {
     return <Menosde14 />;
@@ -65,7 +79,7 @@ export function Teams({ players }: { players: Player[] }) {
         />
         <Avatar size="xl" name="Team 1" />
         <Box textAlign="left">
-          {team1.map((item, index) => {
+          {teams.team1.map((item, index) => {
             return (
               <Text key={item.id} py="1">
                 {`${index + 1} - ${item.name}`}
@@ -93,7 +107,7 @@ export function Teams({ players }: { players: Player[] }) {
         />
         <Avatar size="xl" name="Team 2" />
         <Box textAlign="left">
-          {team2.map((item, index) => {
+          {teams.team2.map((item, index) => {
             return (
               <Text key={item.id} py="1">
                 {`${index + 1} - ${item.name}`}
