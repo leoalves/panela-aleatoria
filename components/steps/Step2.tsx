@@ -8,6 +8,7 @@ import {
   Heading,
   useColorModeValue as mode,
   Icon,
+  useToast,
 } from "@chakra-ui/react";
 import { HiStar } from "react-icons/hi";
 
@@ -20,6 +21,7 @@ export function SelectPlayers({
   players: Player[];
   setPlayers: any;
 }) {
+  const toast = useToast();
   if (!players || players.length < 14) {
     return <Error />;
   }
@@ -55,6 +57,22 @@ export function SelectPlayers({
                 size="lg"
                 checked={selPlayer.arrived}
                 onChange={(e) => {
+                  const numOfSelectedPlayers = players.filter(
+                    (player) => player.arrived
+                  ).length;
+
+                  toast({
+                    title: `${
+                      e.target.checked
+                        ? numOfSelectedPlayers + 1
+                        : numOfSelectedPlayers - 1
+                    } jogadores selectionados`,
+                    description: "",
+                    status: "success",
+                    duration: 1000,
+                    isClosable: true,
+                  });
+
                   setPlayers(
                     players.map((player) => {
                       if (selPlayer.id === player.id) {
