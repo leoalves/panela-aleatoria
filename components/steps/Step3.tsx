@@ -23,10 +23,12 @@ export function Teams({ players }: { players: Player[] }) {
 
   const playersByRating = _groupBy(selectedPlayers, (player) => player.score);
   const shuffledPlayersList = _flattendeep(
-    Object.keys(playersByRating).map((score) =>
-      _shuffle(playersByRating[score])
-    )
+    Object.keys(playersByRating)
+      .sort()
+      .reverse()
+      .map((score) => _shuffle(playersByRating[score]))
   );
+  console.log(shuffledPlayersList);
 
   const teams = goalies.concat(shuffledPlayersList).reduce(
     (acc, player, index) => {
@@ -82,7 +84,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team1.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name}`}
+                {`${index + 1} - ${item.name}(${item.score})`}
               </Text>
             );
           })}
@@ -110,7 +112,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team2.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name}`}
+                {`${index + 1} - ${item.name}(${item.score})`}
               </Text>
             );
           })}
