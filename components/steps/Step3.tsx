@@ -84,7 +84,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team1.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name}(${item.score})`}
+                {`${index + 1} - ${item.name}`}
               </Text>
             );
           })}
@@ -112,7 +112,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team2.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name}(${item.score})`}
+                {`${index + 1} - ${item.name}`}
               </Text>
             );
           })}
