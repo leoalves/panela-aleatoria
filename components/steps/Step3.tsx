@@ -103,8 +103,8 @@ export function Teams({ players }: { players: Player[] }) {
   if (totalPlayers > 21) {
     return <Maisde21 />;
   }
-  if (goalies.length >= 3) {
-    return <Maximo2Goleiros />;
+  if (goalies.length >= 4) {
+    return <Maximo3Goleiros />;
   }
 
   return (
@@ -215,11 +215,11 @@ export function Menosde14() {
   );
 }
 
-export function Maximo2Goleiros() {
+export function Maximo3Goleiros() {
   return (
     <Alert status="error">
       <AlertIcon />
-      Selecione no maximo 2 goleiros
+      Selecione no maximo 3 goleiros
     </Alert>
   );
 }
