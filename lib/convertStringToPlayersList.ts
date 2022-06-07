@@ -10,7 +10,7 @@ export function convertStrToPlayersList(data: string) {
       if (isNumber) {
         return acc.concat({
           id: uuidv4(),
-          name: splitedLine[splitedLine.length - 1].trim(),
+          name: splitedLine[splitedLine.length - 1].trim().toLowerCase().replace('leo', 'Adriano Rafoul'),
           arrived: false,
           goalie: false,
           score: 0,
