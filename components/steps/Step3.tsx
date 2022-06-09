@@ -56,7 +56,8 @@ export function Teams({ players }: { players: Player[] }) {
       .reverse()
       .map((score) => _shuffle(playersByRating[score]))
   );
-  
+  console.log(shuffledPlayersList);
+
   const teams = goalies.concat(shuffledPlayersList).reduce(
     (acc, player, index) => {
       const turn = selectTurn({
@@ -130,7 +131,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team1.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name.toLowerCase().replace('leo', 'Adriano Rafoul')}`}
+                {`${index + 1} - ${item.name}`}
               </Text>
             );
           })}
@@ -158,7 +159,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team2.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name.toLowerCase().replace('leo', 'Adriano Rafoul')}`}
+                {`${index + 1} - ${item.name}`}
               </Text>
             );
           })}
@@ -186,7 +187,7 @@ export function Teams({ players }: { players: Player[] }) {
           {teams.team3.map((item, index) => {
             return (
               <Text key={item.id} py="1">
-                {`${index + 1} - ${item.name.toLowerCase().replace('leo', 'Adriano Rafoul')}`}
+                {`${index + 1} - ${item.name}`}
               </Text>
             );
           })}
