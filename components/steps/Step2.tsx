@@ -107,7 +107,7 @@ export function SelectPlayers({
               />
             </Box>
             <Box textAlign="center" w="40%">
-              {Array.from({ length: 5 }).map((_, index) => (
+              {Array.from({ length: 7 }).map((_, index) => (
                 <Icon
                   key={index}
                   as={HiStar}
